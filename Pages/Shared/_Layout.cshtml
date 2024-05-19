@@ -1,51 +1,164 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - mPloy_TeamProjectG5</title>
+    <title>@ViewData["Title"] - mPloy_FinalProject_group5</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/mPloy_TeamProjectG5.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">mPloy_TeamProjectG5</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - mPloy_TeamProjectG5 - <a asp-area="" asp-page="/Privacy">Privacy</a>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            display: flex;
+            height: 80px;
+            width: 100%;
+            background-color: rgb(177 151 94 / 55%);
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px 0 100px;
+            flex-wrap: wrap;
+        }
+
+
+            nav .ourlogo {
+                color: #fff;
+                font-size: 40px;
+                font-weight: 600;
+                margin-left: -25px;
+                margin-top: 0px;
+            }
+
+        #logo a:hover {
+            color: snow;
+            font-size: 50px;
+            font-weight: 600;
+            margin-right: 0px;
+            margin-top: 0px;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+            nav ul li {
+                margin: 0 5px;
+                padding-top: 15px;
+                margin-top: 0px;
+            }
+
+                nav ul li a {
+                    color: #f2f2f2;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    letter-spacing: 1px;
+                    text-decoration: none;
+                    font-size: 18px;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
+
+                    nav ul li a.active,
+                    nav ul li a:hover {
+                        color: #111;
+                        background: rgb(229 222 189);
+                    }
+
+        body {
+            margin: 0 0 44px 0 !important;
+            padding: 0 !important;
+            background-color: rgb(249 246 239)
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <section style="min-height: 100vh;">
+
+        <nav style="margin:0;">
+
+            <div class="ourlogo">
+
+                <a style=" color: snow; font-size: 50px; font-weight: 600; margin-right: 0px; margin-top: 0px; text-decoration: none;" asp-page="/index">mPloy</a>
+
+
+            </div>
+
+            <ul>
+
+                <li class="nav-item float-right">
+                    <form class="form-inline">
+                        <a class="nav-link text-dark" asp-area="" asp-page="/UserAccount/CreateTask">Create Task</a>
+                    </form>
+                </li>
+
+                <li class="nav-item"><a class="nav-link text-dark" asp-page="/Tasks/GetAllTasks">See Tasks</a></li>
+
+
+                    <li class="nav-item float-right">
+                        <form class="form-inline">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/UserAccount/CreateUser">Create Account</a>
+                        </form>
+                    </li>
+
+
+                    <li class="nav-item float-right">
+                        <form class="form-inline">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/UserAccount/AccountLogin">Log In</a>
+                        </form>
+                    </li>
+                
+
+
+            </ul>
+
+        </nav>
+
+        <div>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    </section>
+
+    <footer style="display: flex;  background-color: rgb(177 151 94 / 55%);" class="border-top footer text-muted">
+        <div style=" margin-left: 20px;">
+            &copy; 2022 - mPloy_FinalProject_group5 - <a style="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>
+
+
+
+
+
+

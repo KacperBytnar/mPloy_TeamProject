@@ -1,0 +1,113 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.UserAccount.CreateUserModel
+@{ }
+
+
+<style>
+
+    .form-control {
+        width: 31.5%;
+    }
+
+    .Hname {
+        margin-bottom: 20px;
+        font-family: 'wire one', serif;
+        font-size: 60px;
+        padding-top: 120px;
+        padding-left: 50px;
+    }
+
+
+    label {
+        text-align: left;
+        clear: both;
+        float: left;
+        margin-right: 15px;
+        width: 135px;
+    }
+
+</style>
+
+
+<div class="container" style="width:100%;">
+    <form method="post">
+        <h2 style="padding-left:0" class="Hname">Create Account</h2>
+
+        <div style="width:50%; float:left">
+            <div class="form-group">
+                <label asp-for="@Model.registerModel.Username" class="control-label">Username: </label>
+                <input asp-for="@Model.registerModel.Username" class="form-control" />
+                <span asp-validation-for="@Model.registerModel.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.registerModel.Password" class="control-label">Password: </label>
+                <input type="password" asp-for="@Model.registerModel.Password" class="form-control" />
+                <span asp-validation-for="@Model.registerModel.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.registerModel.ConfirmPassword" class="control-label">Confirm Password: </label>
+                <input type="password" asp-for="@Model.registerModel.ConfirmPassword" class="form-control" />
+            </div>
+            <h3 style="margin-bottom:20px; text-align:center; color: red; font-family:sans-serif " Comic Sans MS";> @Model.registerMessage</h3>
+            <div class="form-group" style="margin-top:40px; margin-left:-10px">
+                <input type="submit" value="Create Account" class="btn rounded-pill" style="background-color: rgb(163 160 130)" />
+            </div>
+        </div>
+        <div style="width:50%; float:right; margin-top:-100px;">
+            <div class="column-right">
+                <h2 style="padding-left:0; text-align:center; font-size:20px"><p style="text-align: center; font-size: 50px; font-family:'wire one';">Profile information.</p></br> You can either fill them now or skip this part and update your profile later!</h2>
+                <div class="col-md-6" style="float: left;">
+                    <div class="media" style="margin-bottom: 10px">
+                        <label> Email:</label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.Email" />
+                        <span asp-validation-for="@Model.registerModel.User.Email" class="text-danger"></span>
+                    </div>
+                    <div class="media">
+                        <label>   First Name </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.FirstName" />
+                        <span asp-validation-for="@Model.registerModel.User.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="media">
+                        <label>   Last Name </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.LastName" />
+                        <span asp-validation-for="@Model.registerModel.User.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="media" style="margin-bottom: 10px">
+                        <label>   Age: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.Age" />
+                        <span asp-validation-for="@Model.registerModel.User.Age" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6" style="float:right; margin-bottom:10px;">
+                    <div class="media">
+                        <label> Street: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.StreetAddress" />
+                        <span asp-validation-for="@Model.registerModel.User.StreetAddress" class="text-danger"></span>
+                    </div>
+                    <div class="media">
+                        <label> Zip code: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.ZipCode" />
+                        <span asp-validation-for="@Model.registerModel.User.ZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="media" style="margin-bottom: 10px">
+                        <label> City: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.City" />
+                        <span asp-validation-for="@Model.registerModel.User.Age" class="text-danger"></span>
+                    </div>
+                    <div class="media" style="margin-bottom: 10px">
+                        <label> Phone: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:200px;" asp-for="@Model.registerModel.User.PhoneNumber" />
+                        <span asp-validation-for="@Model.registerModel.User.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="media">
+                        <label> Description: </label>
+                        <input type="text" class="form-control rounded-pill" style="width:400px; height:150px;" asp-for="@Model.registerModel.User.Description" />
+                        <span asp-validation-for="@Model.registerModel.User.Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

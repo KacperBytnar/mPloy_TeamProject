@@ -1,10 +1,121 @@
 ﻿@page
+@using mPloy_FinalProject_group5.Pages
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">This is initial mPloy Page</a>.</p>
-</div>
+
+<head>
+
+
+
+
+
+</head>
+<style>
+
+    body {
+        margin: 0px;
+        padding-top: 20px;
+    }
+
+    .colour-block {
+        background: #EBDCBC;
+        padding: 7% 20% 10% 20%;
+        color: #EBDCBC;
+    }
+
+    .white-block {
+        background: #FFF1C5;
+        padding: 7% 20% 10% 20%;
+        color: #FFF1C5;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 80px;
+        font-family: 'wire one', serif;
+        font-weight: normal;
+    }
+
+    p {
+        font-size: 20px;
+        font-family: 'Raleway', serif;
+    }
+
+    .skew-cc {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        background: linear-gradient(to right bottom, #EBDCBC 49%, #FFF1C5 50%)
+    }
+
+    .skew-c {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        background: linear-gradient(to left bottom, #FFF1C5 49%, #EBDCBC 50%);
+    }
+</style>
+
+<body>
+
+    <div class="skew-c"></div>
+    <div class="colour-block" style="padding-bottom:-50px">
+        <div style="width: 40%; float: left">
+            <img src="/Images/2MenCarryingSofa.jpg" style="border: solid 10px #EBDCBC; margin-left:-200px;" title="" alt="">
+
+        </div>
+        <div style="width:60%; float:right;">
+            <h1 style="color: black; font-size: 64px; margin-left: 100px; margin-top:5px;">
+                mPloy - What is it about?
+            </h1>
+            <p style="color: black; margin-left:100px;">
+                Need help in furniture assembling? Or looking for someone to clean your appartment or take care of your garden? Or maybe you want to help others? </br>mPloy is exactly what you are looking for!</br>
+                </br>Hundreds of people are here and ready to help you with any kind of task and in any point of Rzeszow.
+            </p>
+        </div>
+        </br>
+        <div>
+            <h1 style="color:black; text-align:center">How does it work?</h1>
+            <p style="color:black; text-align:right">
+                If you are looking for someone to help you:</br> Create a task, wait for application. Approve. Enjoy.</br>
+                Give it a try! -> <a style="background-color: rgb(163 160 130); margin-left:40px" class="btn rounded-pill" asp-page="/Tasks/CreateTask">Create Task</a>
+            </p>
+        </div>
+    </div>
+    <div class="skew-cc"></div>
+    <div class="white-block">
+        <h1 style="color:black">Want to help others?</h1>
+        <p style="color:black">
+            Choose a task. Get approved. Finish the task. Get paid.</br>
+            Give it a try! ->
+            <a style="background-color: rgb(163 160 130); margin-left:50px" class="btn rounded-pill" asp-page="/Tasks/GetAllTasks">See Tasks</a></br>
+            </br>Sample Task</br>
+            <img src="/Images/SampleTask.PNG" style="border: solid 10px #EBDCBC; margin-left:-200px;" title="" alt="">
+
+
+        </p>
+    </div>
+    <div class="skew-c"></div>
+    <div class="colour-block">
+        <h1 style="color:black">
+            Do you need help?
+        </h1>
+        <p style="color:black">
+            Hundreds of people are here and ready to help you with any kind of task in any point of Rzeszow.</br>
+            --How can we help you?</br>
+            (example : need a gartender)</br>
+
+            Describe what needs to be done)</br>
+            Recieve applications with prices from Mployers</br>
+            Choose a Mployer and discuss the details
+        </p>
+    </div>
+
+
+</body>
+
