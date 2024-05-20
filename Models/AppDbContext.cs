@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using mPloy_TeamProjectG5.Models;
 
-namespace mPloy_FinalProject_group5.Models
+namespace mPloy_TeamProjectG5.Models
 {
     public class AppDbContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
     {
@@ -16,12 +16,5 @@ namespace mPloy_FinalProject_group5.Models
         public virtual DbSet<AppUser> AppUsers { get; set; }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-
-
-        }
     }
 }
