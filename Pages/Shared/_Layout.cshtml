@@ -1,4 +1,7 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity;
+@using mPloy_TeamProjectG5.Models;
+@inject SignInManager<AppUser> signInManager
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,6 +116,23 @@
                 <li class="nav-item"><a class="nav-link text-dark" asp-page="/Tasks/GetAllTasks">See Tasks</a></li>
 
 
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <li>
+                        <form class="form-inline">
+                            <a style="color:unset; font-size:unset; font-weight:unset; margin-right:-20px" asp-page="/UserAccount/DisplayUser"> Hello @User.Identity.Name</a>
+                        </form>
+                    </li>
+
+                    <li>
+                        <form class="form-inline" asp-page="/UserAccount/LogOut" method="post">
+                            <button type="submit" class="nav-link btn btn-lnk text-dark">  Logout  </button>
+                        </form>
+                    </li>
+                }
+
+                else
+                {
                     <li class="nav-item float-right">
                         <form class="form-inline">
                             <a class="nav-link text-dark" asp-area="" asp-page="/UserAccount/CreateUser">Create Account</a>
@@ -125,6 +145,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/UserAccount/UserLogin">Log In</a>
                         </form>
                     </li>
+                }
+
                 
 
 
