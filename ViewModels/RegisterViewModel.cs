@@ -5,26 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using mPloy_TeamProjectG5.Models;
 
-namespace mPloy_FinalProject_group5.ViewModels
+namespace mPloy_TeamProjectG5.ViewModels
 {
     public class RegisterViewModel
     {
-        public AppUser User { get; set; }
+        public required AppUser User { get; set; }
         [Required]
         [Display(Name = "Login")]
-        public string Username { get; set; }
+        public required string Username { get; set; }
 
         [Required]
         [Display(Name = "EmailAddress")]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public required string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "Password and password confirmation do not match")]
-        public string ConfirmPassword { get; set; }
+        public required string ConfirmPassword { get; set; }
     }
 }

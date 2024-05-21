@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+
 
 namespace mPloy_TeamProjectG5.Models
 {
