@@ -16,8 +16,6 @@
   <ItemGroup>
     <Folder Include="Common\Enums\" />
     <Folder Include="Pages\Tasks\" />
-    <Folder Include="Services\EFServices\" />
-    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

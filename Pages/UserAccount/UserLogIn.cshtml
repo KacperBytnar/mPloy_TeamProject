@@ -1,0 +1,50 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.UserAccount.AccountLogInModel
+@{
+}
+
+<div class="container">
+    <div class="row justify-content-center pt-2">
+        <div class="col-sm-4 py-4 login-box">
+            <div>
+                <form method="post" asp-route-ReturnUrl="@Model.URL">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <h3 style="text-align: center; color: red; font-family: " Comic Sans MS";>@Model.LoginMessage</h3>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.loginModel.Username" name="username">Username:</label>
+                        <input class="form-control" type="text" asp-for="@Model.loginModel.Username" />
+                        <span asp-validation-for="@Model.loginModel.Username" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label-sm mb-0" asp-for="@Model.loginModel.Password" name="password">Password</label>
+                        <input class="form-control" type="password" asp-for="@Model.loginModel.Password" />
+                        <span asp-validation-for="@Model.loginModel.Password" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                    <div class="checkbox">
+                    <input class="form-control" type="checkbox" asp-for="@Model.loginModel.RememberMe" />
+                    <span asp-validation-for="@Model.loginModel.RememberMe" class="text-danger"></span>
+                    @Html.DisplayNameFor(m => m.loginModel.RememberMe)
+                    </div>
+                    </div>*@
+                    <div class="row">
+                        <div class="col mt-3 text-center">
+                            <input type="submit" value="Log in" class="btn btn-dark text-light" />
+                        </div>
+                    </div>
+                </form>
+                </br>
+                <div class="row justify-content-center">
+                    <div class="col text-center">
+                        <span>You are not registered yet? Sign-up now:</span>
+                    </div>
+                </div>
+                <div class="row mt-3 justify-content-center">
+                    <div class="col text-center">
+                        <a asp-page="CreateUser" class="btn btn-outline-dark">Sign up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
