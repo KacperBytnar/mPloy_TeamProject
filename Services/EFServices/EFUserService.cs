@@ -9,8 +9,9 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using mPloy_TeamProjectG5.Models;
 using mPloy_TeamProjectG5.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace mPloy_FinalProject_group5.Services.EFServices
+namespace mPloy_TeamProjectG5.Services.EFServices
 {
     public class EFUserService : IUserService
     {
@@ -37,15 +38,19 @@ namespace mPloy_FinalProject_group5.Services.EFServices
         {
             return context.Users.Where(t => t.Id == id).FirstOrDefault(t => t.Id == id);
         }
-
-        public async Task<AppUser> EditUser(AppUser user)
+        //public async Task<AppUser> EditUser(AppUser user)
+        //{
+        //    context.AppUsers.Attach(user); // Attach the user object
+        //    context.Entry(user).State = EntityState.Modified; // Set state to Modified
+        //    await userManager.UpdateAsync(user);
+        //    await context.SaveChangesAsync();
+        //    return user;
+        //}
+        public void EditUser(AppUser user)
         {
-            //context.AppUsers.Update(user);
-            //var tempUser = userManager.Users.Where(t => t.Id == user.Id).FirstOrDefault();
-            var tempUser = await userManager.FindByIdAsync(user.Id.ToString());
+            Models.AppUser tempUser = context.AppUsers.FirstOrDefault(u => u.Id == user.Id);
             if (tempUser != null)
             {
-                tempUser.Id = user.Id;
                 tempUser.FirstName = user.FirstName;
                 tempUser.LastName = user.LastName;
                 tempUser.Age = user.Age;
@@ -55,18 +60,16 @@ namespace mPloy_FinalProject_group5.Services.EFServices
                 tempUser.Description = user.Description;
                 tempUser.Email = user.Email;
                 tempUser.PhoneNumber = user.PhoneNumber;
-                await userManager.UpdateAsync(tempUser);
+
                 context.SaveChanges();
-                return tempUser;
             }
             else
-                return tempUser;
+            {
+                throw new ArgumentException("User not found");
+            }
         }
 
-        public void UpdateUser(AppUser user)
-        {
-            userManager.UpdateAsync(user);
-            EditUser(user);
-        }
+
     }
 }
+

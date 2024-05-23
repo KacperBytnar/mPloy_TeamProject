@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using mPloy_FinalProject_group5.Services.EFServices;
+using mPloy_TeamProjectG5.Services.EFServices;
 using mPloy_TeamProjectG5.Services.Interfaces;
 
 namespace mPloy_TeamProjectG5

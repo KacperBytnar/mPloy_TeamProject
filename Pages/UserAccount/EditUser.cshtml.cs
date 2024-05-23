@@ -13,32 +13,31 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace mPloy_TeamProjectG5.Pages.UserAccount
 {
-    public class EditUserModel : PageModel
+     public class EditUserModel : PageModel
     {
         [BindProperty]
         public AppUser LoggedUser { get; set; }
         private IUserService userService;
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public int UserID { get; set; }
         [BindProperty]
-        public IFormFile Upload { get; set; }
+        public IFormFile? Upload { get; set; } 
         // path for the Images folder
-        private string ImagePath
-        {
-            get { return Path.Combine(WebHostEnvironment.WebRootPath, "Images/Avatars"); }
-        }
-        public IWebHostEnvironment WebHostEnvironment { get; } //Property
-        private Microsoft.AspNetCore.Hosting.IHostingEnvironment _environment;
-        public EditUserModel(IUserService userService, Microsoft.AspNetCore.Hosting.IHostingEnvironment environment, IWebHostEnvironment webHostEnvironment)
+        //private string ImagePath
+        //{
+        //    get { return Path.Combine(WebHostEnvironment.WebRootPath, "Images/Avatars"); }
+        //}
+        //public IWebHostEnvironment WebHostEnvironment { get; } //Property
+        public EditUserModel(IUserService userService)
         {
             this.userService = userService;
-            _environment = environment;
-            WebHostEnvironment = webHostEnvironment;
+
         }
         public void OnGet()
         {
             UserID = User.GetUserId();
             LoggedUser = userService.GetUserById(UserID);
+            LoggedUser.Id = UserID;
             if (!string.IsNullOrEmpty(LoggedUser.Picture))
             {
                 LoggedUser.Picture = "/Images/Avatars/" + LoggedUser.Picture;
@@ -71,10 +70,15 @@ namespace mPloy_TeamProjectG5.Pages.UserAccount
             //}
             else
             {
+                if (UserID == 0)
+                {
+                    UserID = User.GetUserId();
+                }
+                LoggedUser.Id = UserID;
                 userService.EditUser(LoggedUser);
                 return RedirectToPage("/UserAccount/DisplayUser");
             }
-
+            
         }
     }
 }

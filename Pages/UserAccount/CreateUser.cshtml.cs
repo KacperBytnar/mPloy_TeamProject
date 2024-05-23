@@ -65,7 +65,7 @@ namespace mPloy_TeamProjectG5.Pages.UserAccount
                 if (result.Succeeded)
                 {
                     await signInManager.SignInAsync(userr, isPersistent: false);
-                    return Page(); // RedirectToPage("/UserAccount/DisplayUser");
+                    return RedirectToPage("/UserAccount/DisplayUser");
                 }
                 else
                 {
