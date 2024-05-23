@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Enums\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="FluentValidation.WebAPI" Version="8.6.1" />
     <PackageReference Include="IKVM" Version="8.8.0" />
