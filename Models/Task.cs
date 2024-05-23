@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using mPloy_TeamProjectG5.Common.Enums;
 
 namespace mPloy_TeamProjectG5.Models
 {
@@ -23,30 +24,11 @@ namespace mPloy_TeamProjectG5.Models
         public DateTime DueDate { get; set; }
         [Required]
         public int Prize { get; set; }
-
-
-        //public enum TaskCategory
-        //{
-        //    Cleaning,
-        //    MovingServices,
-        //    Handyman,
-        //    Gardening
-        //}
-
-        //public enum TaskState
-        //{
-        //    Open,
-        //    InProgress,
-        //    Closed
-        //}
-
-        //public enum PaymentMethod
-        //{
-        //    Cash,
-        //    MobilePay,
-        //    BankTransfer,
-        //    SecurePayment
-        //}
+        public TaskState State { get; set; }
+        [Required]
+        public PaymentMethod Payment { get; set; }
+        [Required]
+        public TaskCategory Categories { get; set; }
 
 
         // Foreign Keys
