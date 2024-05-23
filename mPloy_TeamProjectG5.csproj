@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Tasks\**" />
     <Compile Remove="wwwroot\NewFolder\**" />
-    <Content Remove="Pages\Tasks\**" />
     <Content Remove="wwwroot\NewFolder\**" />
-    <EmbeddedResource Remove="Pages\Tasks\**" />
     <EmbeddedResource Remove="wwwroot\NewFolder\**" />
-    <None Remove="Pages\Tasks\**" />
     <None Remove="wwwroot\NewFolder\**" />
   </ItemGroup>
 
