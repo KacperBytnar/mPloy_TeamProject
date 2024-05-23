@@ -71,16 +71,15 @@
 
 
 
-
-
 <div class="row">
     <div class="column-left">
 
-
+    <form style="padding-left: 50px" method="post">
+        <div asp-validation-summary="ModelOnly">
         @*<img style="width:230px; height:240px;" src="https://cdn1.vectorstock.com/i/1000x1000/51/05/male-profile-avatar-with-brown-hair-vector-12055105.jpg">*@
 
         <img style="width:230px; height:240px;" src="@Model.LoggedUser.Picture" class="img-fluid img-thumbnail" title="Avatar" alt="Avatar picture couldn't be displayed now'">
-            <input type="file" class="form-control" asp-for="@Model.Upload" />
+        <input type="file" class="form-control" asp-for="@Model.Upload" />
 
 
 
@@ -106,7 +105,7 @@
             </div>
             <div class="media">
                 <label>   Age: </label>
-                <input type="text" class="form-control rounded-pill" placeholder="Age *" asp-for="@Model.LoggedUser.Age" />
+                <input type="number" class="form-control rounded-pill" placeholder="Age *" asp-for="@Model.LoggedUser.Age" />
                 <span asp-validation-for="@Model.LoggedUser.Age" class="text-danger"></span>
             </div>
         </div>
@@ -141,83 +140,16 @@
 
     </div>
 
-    <div class="container" style="position:absolute; bottom:-22%; left:-2%">
-        <div class="form-group" style="display:inline-flex">
-
-            <a asp-page="/UserAccount/EditUser" class="btn rounded-pill" style=" font-size: x-large; margin-right:25px; margin-top:30px; background-color: rgb(163 160 130);">Save Changes</a>
-
-            <a asp-page="/UserAccount/DisplayUser" class="btn rounded-pill" style=" font-size: x-large; width:125px; margin-top:30px; background-color: rgb(163 160 130);">Cancel</a>
-
-        </div>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <!--<div class="row">
-        <div class="column left">-->
-    @*<img src="@Model.LoggedUser.Picture" class="img-fluid img-thumbnail" title="" alt="">*@
-
-
-    <!--<img src="https://cdn1.vectorstock.com/i/1000x1000/51/05/male-profile-avatar-with-brown-hair-vector-12055105.jpg" class="img-fluid img-thumbnail" title="" alt="">
-        </div>
-
-
-        <div class="column right">
-            <div>
-                <h3 class="dark-color">About Me</h3>
-
-                <p>
-                    @Model.LoggedUser.Description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                </p>
-
-                <div class="col-6" style="float:left;">
-                    <div class="media">
-                        <label>   Username: </label>
-                        <p>@Model.LoggedUser.UserName </p>
-                    </div>
-                    <div class="media">
-                        <label>   Full Name: </label>
-                        <p>@Model.LoggedUser.FirstName @Model.LoggedUser.LastName Boris The Razor</p>
-                    </div>
-                    <div class="media">
-                        <label>   Age: </label>
-                        <p>@Model.LoggedUser.Age 25</p>
-                    </div>
-                </div>
-                <div class="col-6" style="float:right">
-                    <div class="media">
-                        <label> Address: </label>
-                        <p> Trekronergade 25, Copenhage, 2500  @Model.LoggedUser.StreetAddress @Model.LoggedUser.ZipCode @Model.LoggedUser.City </p>
-                    </div>
-                    <div class="media">
-                        <label> Email:</label>
-                        <p>@Model.LoggedUser.Email boris@razor.dk</p>
-                    </div>
-                    <div class="media">
-                        <label> Phone: </label>
-                        <p>   @Model.LoggedUser.PhoneNumber +4529863327</p>
-                    </div>
-                </div>
-
+    <div class="container" style="position:absolute; bottom:-32%; left:-2%">
+            <div class="form-group" style="display:flex">
+                <button type="submit" value="Save" class="btn rounded-pill" style=" font-size: medium; margin-right:25px; margin-top:30px; background-color: rgb(163 160 130);">Save Changes</button>
+                <a asp-page="/UserAccount/DisplayUser" class="btn rounded-pill" style=" font-size: medium; width:125px; margin-top:30px; background-color: rgb(163 160 130);">Cancel</a>
             </div>
-        </div>
-
+        </form>
     </div>
 
-    <div class="container" style="position:absolute; bottom:32%; left:19.6%">
-        <div class="form-group" style="display:flex">
+</div>
 
-            <a asp-page="/UserAccount/EditUser" class="btn rounded-pill" style=" font-size: medium; background-color: rgb(163 160 130);">Edit Profile</a>
 
-        </div>
-    </div>-->
+
+
