@@ -15,21 +15,15 @@ namespace mPloy_TeamProjectG5.Pages.Tasks
     [Authorize]
     public class CreateTaskModel : PageModel
     {
-        public CreateTaskModel()
-        {
-                
-        }
-        // to be implemented
-        // ITaskService taskService; 
+         ITaskService taskService; 
         [BindProperty]
         public Models.Task task { get; set; }
         public int UserID { get; set; }
 
-        // to be implemented
-        //public CreateTaskModel(ITaskService tService)
-        //{
-        //    taskService = tService;
-        //}
+        public CreateTaskModel(ITaskService tService)
+        {
+            taskService = tService;
+        }
 
         public IActionResult OnGet()
         {
@@ -42,7 +36,7 @@ namespace mPloy_TeamProjectG5.Pages.Tasks
             {
                 return Page();
             }
-            // Task Service to create task - To be implemented 
+            taskService.CreateTask(task, UserID);
             return RedirectToPage("GetAllTasks");
         }
     }

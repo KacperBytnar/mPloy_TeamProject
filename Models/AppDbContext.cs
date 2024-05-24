@@ -14,6 +14,8 @@ namespace mPloy_TeamProjectG5.Models
         }
 
         public virtual DbSet<AppUser> AppUsers { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
+
 
 
     }
