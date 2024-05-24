@@ -22,6 +22,8 @@ namespace mPloy_TeamProjectG5
             services.AddRazorPages();
 
             services.AddTransient<IUserService, EFUserService>();
+            services.AddTransient<ITaskService, EFTaskService>();
+
 
             IServiceCollection serviceCollection = services.AddHttpContextAccessor();
 
