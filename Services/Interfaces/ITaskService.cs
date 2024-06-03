@@ -7,5 +7,10 @@
         public IEnumerable<Models.Task> GetUserTasksCreatedByUserId(int userID);
         public Models.Task GetTask(int id);
         public IEnumerable<Models.Task> GetAllTasks();
+        public Models.Task UpdateTask(Models.Task task, int creatorID);
+        public void EditTask(Models.Task task, int creatorID);
+        public void DeleteTask(int id);
+
+
     }
 }
