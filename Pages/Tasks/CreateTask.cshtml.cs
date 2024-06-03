@@ -15,14 +15,21 @@ namespace mPloy_TeamProjectG5.Pages.Tasks
     [Authorize]
     public class CreateTaskModel : PageModel
     {
-         ITaskService taskService; 
+        IUserService userService;
+        ITaskService taskService; 
         [BindProperty]
         public Models.Task task { get; set; }
         public int UserID { get; set; }
 
-        public CreateTaskModel(ITaskService tService)
+        public CreateTaskModel(ITaskService tService, IUserService userService)
         {
             taskService = tService;
+            //AppUser taskCreator = new AppUser ();
+            //taskCreator = userService.GetUserById(UserID);
+
+            //task.Creator= taskCreator;
+
+            this.userService = userService;
         }
 
         public IActionResult OnGet()
@@ -32,10 +39,19 @@ namespace mPloy_TeamProjectG5.Pages.Tasks
         }
         public IActionResult OnPost(int UserID)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    foreach (var modelStateKey in ModelState.Keys)
+            //    {
+            //        var value = ModelState[modelStateKey];
+            //        foreach (var error in value.Errors)
+            //        {
+            //            // Log the errors (You can replace this with proper logging)
+            //            Console.WriteLine($"Key: {modelStateKey}, Error: {error.ErrorMessage}");
+            //        }
+            //    }
+            //    return Page();
+            //}
             taskService.CreateTask(task, UserID);
             return RedirectToPage("GetAllTasks");
         }
