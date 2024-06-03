@@ -23,6 +23,8 @@ namespace mPloy_TeamProjectG5
 
             services.AddTransient<IUserService, EFUserService>();
             services.AddTransient<ITaskService, EFTaskService>();
+            services.AddTransient<IBidService, EFBidService>();
+
 
 
             IServiceCollection serviceCollection = services.AddHttpContextAccessor();

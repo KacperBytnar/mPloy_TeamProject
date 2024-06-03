@@ -20,5 +20,27 @@ namespace mPloy_TeamProjectG5.Services.EFServices
             context.Tasks.Add(task);
             context.SaveChanges();
         }
+
+        public IEnumerable<Models.Task> GetAllTasks()
+        {
+            return context.Tasks;
+        }
+
+        public Models.Task GetTask(int id)
+        {
+            return context.Tasks.Where(t => t.TaskID == id).FirstOrDefault(t => t.TaskID == id);
+        }
+
+        public IEnumerable<Models.Task> GetUserTasksCreatedByUserId(int userID)
+        {
+            return context.Tasks.Where(t => t.CreatorID == userID).ToList();
+        }
+
+        public IEnumerable<Models.Task> GetTasksFilteredByCategory(string category)
+        {
+            Common.Enums.TaskCategory MyEnum;
+            var result = Enum.TryParse(category, out MyEnum);
+            return context.Tasks.Where(t => t.Categories == MyEnum).ToList();
+        }
     }
 }
