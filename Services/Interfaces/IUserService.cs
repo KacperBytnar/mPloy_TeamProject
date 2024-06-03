@@ -9,5 +9,8 @@ namespace mPloy_TeamProjectG5.Services.Interfaces
         public AppUser GetUserById(int id);
         public void EditUser(AppUser user);
 
+
+
+
     }
 }

@@ -40,6 +40,8 @@ namespace mPloy_TeamProjectG5.Models
         // Navigation Properties
         public virtual AppUser Creator { get; set; }
         // public virtual AppUser Performer { get; set; }
+        public virtual ICollection<UserBidOnTask> Bids { get; set; }
+
     }
     //public class Task
     //{

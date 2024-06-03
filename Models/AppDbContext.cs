@@ -16,6 +16,8 @@ namespace mPloy_TeamProjectG5.Models
 
         public virtual DbSet<AppUser> AppUsers { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<UserBidOnTask> UserBids { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
