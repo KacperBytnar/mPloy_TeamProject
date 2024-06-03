@@ -42,5 +42,39 @@ namespace mPloy_TeamProjectG5.Services.EFServices
             var result = Enum.TryParse(category, out MyEnum);
             return context.Tasks.Where(t => t.Categories == MyEnum).ToList();
         }
+
+        public Models.Task UpdateTask(Models.Task task, int creatorID)
+        {
+
+            Models.Task tsk = context.Tasks.Where(t => t.TaskID == task.TaskID).FirstOrDefault();
+            if (tsk != null)
+            {
+                task.CreatorID = creatorID;
+                tsk.Title = task.Title;
+                tsk.Location = task.Location;
+                tsk.Description = task.Description;
+                tsk.Categories = task.Categories;
+                tsk.Location = task.Location;
+                tsk.Prize = task.Prize;
+                tsk.Payment = task.Payment;
+                context.SaveChanges();
+            }
+            return task;
+        }
+
+        public void EditTask(Models.Task task, int creatorID)
+        {
+            task.CreatorID = creatorID;
+            context.Tasks.Update(task);
+            context.SaveChanges();
+        }
+
+        public void DeleteTask(int id)
+        {
+            Models.Task task = context.Tasks.Where(t => t.TaskID == id).FirstOrDefault();
+            context.Tasks.Remove(task);
+            context.SaveChanges();
+
+        }
     }
 }
