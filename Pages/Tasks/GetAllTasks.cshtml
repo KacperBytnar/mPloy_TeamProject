@@ -3,83 +3,83 @@
 @{
 }
 
-<style>
-
-   
-
-</style>
-
 <div class="container">
-
     <div class="btn-toolbar" style="height:120px;">
         <div style="width: 30%; float: left;">
-            <a class="btn btn-secondary float-xl-left" style=" font-size: medium; margin-top: 30px; background-color: rgb(163 160 130) " asp-page="/Tasks/MyTasks"> My Tasks </a>
+            <a class="btn btn-secondary float-xl-left" style="font-size: medium; margin-top: 30px; background-color: rgb(163 160 130)" asp-page="/Tasks/MyTasks">My Tasks</a>
         </div>
-
-        <div style="width:70%; float:right; margin-top:30px; padding-right:110px; ">
-            <form method="get" class=" float-lg-right">
-
+        <div style="width: 70%; float: right; margin-top: 30px; padding-right: 110px;">
+            <form method="get" class="float-lg-right">
                 <select asp-for="Criteria" class="form-control float-lg-right">
                     <option value="">-- Select Category --</option>
                     @foreach (var item in Enum.GetValues(typeof(Common.Enums.TaskCategory)))
                     {
-        <option >
-            @item
-        </option>}
+                        <option>@item</option>
+                    }
                 </select>
                 <input type="submit" value="Search" style="background-color: rgb(163 160 130)" class="btn-sm btn-secondary form-control float-right" />
             </form>
         </div>
     </div>
-
 </div>
 
-@foreach (var item in Model.tasks)
+@foreach (var item in Model.Tasks)
 {
-<div class="container">
+    bool isDisabled = item.IsAnyBidAccepted;
+    string buttonClass = isDisabled ? "btn btn-secondary disabled" : "btn btn-secondary";
+    string disabledAttribute = isDisabled ? "disabled" : "";
 
-    <div class="row">
-        <div class="col-12 mt-3">
-            <div class="card" style="width: 1000px; height: 200px">
-                <div class="card-horizontal" style="display: flex; flex: 1 1 auto;">
-                    <div class="img-square-wrapper">
-                        <img class="img" style="width:100%; width: 137px; height:100%;" src="https://ih1.redbubble.net/image.3309494085.9897/ur,pin_large_front,square,600x600.jpg" alt="Card image cap">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3">
+                <div class="card" style="width: 1000px; height: 200px;">
+                    <div class="card-horizontal" style="display: flex; flex: 1 1 auto;">
+                        <div class="img-square-wrapper">
+                            <img class="img" style="width: 100%; width: 137px; height: 100%;" src="~/Images/wantu.png" alt="Card image cap">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">@item.Task.Title</h6>
+                            <p class="card-text">@item.Task.Description</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h6 class="card-title">@item.Title</h6>
-                        <p class="card-text">@item.Description</p>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <a style="margin-right: 2px"> Location: </a> @item.Task.Location <a style="margin-right: 40px"></a>
+                            <a style="margin-right: 2px"> Category: </a> @item.Task.Categories <a style="margin-right: 40px"></a>
+                            <a style="margin-right: 2px"> Payment Type: </a> @item.Task.Payment <a style="margin-right: 40px"></a>
+                            <a style="margin-right: 2px"> Price: </a> @item.Task.Prize <a style="margin-right: 40px"></a>
+
+                            @if (item.Task.CreatorID != Model.LoggedUser)
+                            {
+                                @if (!Model.bidService.CheckWhetherUserAppliedForTheTask(Model.LoggedUser, item.Task.TaskID))
+                                {
+                                    @if (isDisabled == true)
+                                    {
+                                        <a type = "button" style = "margin-right: 10px; float: right; background-color: rgb(163 160 130); width: 80px" class="@buttonClass" asp-page="/Tasks/ApplyForTask" asp-route-taskId="@item.Task.TaskID" style="@disabledAttribute">Apply</a>
+
+                                    }
+                                    else
+                                    {
+                                        <a type="button" style="margin-right: 10px; float: right; background-color: rgb(163 160 130); width: 100px" class="@buttonClass" asp-page="/Tasks/ApplyForTask" asp-route-taskId="@item.Task.TaskID" style="isDIsabled: 'disabled'">Reserved!</a>
+
+                                    }
+
+
+                        
+                                    }
+                                else
+                                {
+                                    <button type="button" disabled style="margin-right: 10px; background-color: rgb(163 160 130); float: right; width: 210px; margin-bottom:20px;" class="btn btn-secondary">Applied Successfully!</button>
+                                }
+                            }
+                            else
+                            {
+                                <a style="margin-right: 10px; float: right; width: 130px; background-color: rgb(163 160 130)" class="btn btn-secondary" asp-page="/Tasks/Applications" asp-route-id="@item.Task.TaskID">Applications</a>
+                            }
+                        </small>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">
-                        <a style="margin-right: 2px"> Location: </a> @item.Location <a style="margin-right: 40px"></a>
-                        <a style="margin-right: 2px"> Category: </a> @item.Categories <a style="margin-right: 40px"></a>
-                        <a style="margin-right: 2px"> Payment Type: </a> @item.Payment <a style="margin-right: 40px"></a>
-                        <a style="margin-right: 2px"> Price: </a> @item.Prize <a style="margin-right: 40px"></a>
-
-
-                        @*<a style="float: right; width: 80px" class="btn btn-secondary" asp-page="/Tasks/DeleteTask" asp-route-id="@item.TaskID"> Delete </a>*@
-                        @*<a style="margin-right:10px; float:right; width: 80px" class="btn btn-secondary" asp-page="/Tasks/EditTask" asp-route-id="@item.TaskID"> Apply </a>*@
-
-                        @if (item.CreatorID != Model.loggedUser)
-                        {
-
-        @if (!Model.bidService.CheckWhetherUserAppliedForTheTask(Model.loggedUser, item.TaskID))
-        {
-
-                    <a type="button" style="margin-right:10px; float:right; background-color: rgb(163 160 130); width: 80px" class="btn btn-secondary" asp-page="/Tasks/ApplyForTask" asp-route-taskId="@item.TaskID">Apply</a> }
-                    else
-                    {
-
-                    <button type="button" disabled style="margin-right:10px;  background-color: rgb(163 160 130); float:right; width: 210px" class="btn btn-secondary" asp-page="/Tasks/ApplyForTask" asp-route-taskId="@item.TaskID">Applied Succesfully!</button>} }
-    else
-    {
-
-                    <a style="margin-right:10px; float:right; width: 130px;background-color: rgb(163 160 130)" class="btn btn-secondary" asp-page="/Tasks/Applications" asp-route-id="@item.TaskID"> Applications </a>}
-
-                    </small>
                 </div>
             </div>
         </div>
     </div>
-</div>}
+}

@@ -18,6 +18,8 @@ namespace mPloy_TeamProjectG5.Services.Interfaces
         public bool CheckWhetherUserAppliedForTheTask(int userId, int taskId);
         public List<int> GetListOfTasksUserHasAppliedFor(int userId);
         public ICollection<AppUser> GetListOfUsersApplyingForSpecificTask(int taskId);
+        public bool IsAnyBidAccepted(int taskId);
+
 
     }
 }
