@@ -35,7 +35,7 @@ namespace mPloy_TeamProjectG5.Pages.Tasks
         public IActionResult OnPostApprove(int ID)
         {
             bidService.ApproveBid(bidService.GetBidByTaskId(ID));
-            return Page();
+            return Redirect("/Tasks/GetAllTasks");
         }
     }
 }
