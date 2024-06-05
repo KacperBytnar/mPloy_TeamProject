@@ -42,6 +42,11 @@ namespace mPloy_TeamProjectG5.Services.EFServices
             context.UserBids.Update(bid);
             context.SaveChanges();
         }
+        public bool IsAnyBidAccepted(int taskId)
+        {
+            return context.UserBids.Any(b => b.TaskID == taskId && b.isAccepted == true);
+        }
+
 
         public UserBidOnTask GetBid(int id)
         {

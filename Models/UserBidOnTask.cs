@@ -25,3 +25,4 @@ namespace mPloy_TeamProjectG5.Models
         public virtual AppUser User { get; set; }
     }
 }
+
