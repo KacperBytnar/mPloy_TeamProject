@@ -1,0 +1,105 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.Tasks.ApplicationsModel
+@{
+}
+
+
+
+<div class="container" style="height:40px; margin-top:30px; margin-bottom:50px">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="btn-toolbar" style="height:120px; margin-top:30px">
+                <div style="width: 120px; height: 40px;">
+                    <a class="btn btn-secondary" style=" font-size:medium; background-color: rgb(163 160 130)" asp-page="/Tasks/MyTasks"> My Tasks </a>
+                </div>
+
+                <div class="btn-toolbar" style="height:120px; float: right">
+                    <div style="width: 120px; height:40px;">
+                        <a class="btn btn-secondary" style=" font-size: medium; background-color: rgb(163 160 130)" asp-page="/Tasks/GetAllTasks"> All Tasks </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>
+</div>
+
+
+@*<div class="container" style="height:40px;">
+    <div class="btn-toolbar" style="height:120px;">
+        <div style="width: 30%; float: left;">
+            <a class="btn btn-secondary float-xl-left" style=" font-size: medium" asp-page="/Tasks/GetAllTasks"> All Tasks </a>
+        </div>
+    </div>
+</div>*@
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card" style="width: 1000px; height: 200px">
+                <div class="card-horizontal" style="display: flex; flex: 1 1 auto;">
+                    <div class="img-square-wrapper">
+                        <img class="img"  style="width: 100%; max-width: 140px; height: 100%;" src="https://ih1.redbubble.net/image.3309494085.9897/ur,pin_large_front,square,600x600.jpg" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">@Model.Task.Title</h6>
+                        <p class="card-text">@Model.Task.Description</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a style="margin-right: 2px"> Location: </a> @Model.Task.Location <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Category: </a> @Model.Task.Categories <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Payment Type: </a> @Model.Task.Payment <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Price: </a> @Model.Task.Prize <a style="margin-right: 40px"></a>
+
+
+
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@if (Model.UsersApplying.Count != 0 && Model.bidService.GetBidByTaskId(Model.Task.TaskID).isAccepted == false)
+{
+<h1 style="text-align:center; font-family:" Comic Sans MS">Users applying for this task:</h1>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr style="text-align:center">
+                            <th>Username</th>
+                            <th>Avatar</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.UsersApplying)
+                        {
+        <tr>
+            <td class="text-center">@item.UserName</td>
+            <td>
+                <img src="/images/Avatars/DefaultAvatar.png" width="60" height="70">
+            </td>
+            <td class="text-md-center">@item.FirstName @item.LastName</td>
+            <td class="text-md-center">@item.Email</td>
+            <td class="text-md-left">
+                <form method="post">
+                    <button type="submit" asp-page-handler="Approve" asp-route-ID="@Model.Task.TaskID" class="btn btn-secondary" style="background-color: rgb(163 160 130)">Approve</button>
+                </form>
+            </td>
+        </tr>
+}
+                    </tbody>
+                </table>
+ } @*else if (Model.bidService.GetBidByTaskId(Model.Task.TaskID).isAccepted == true)
+                {
+                    <h1 style="text-align:center; font-family:" Comic Sans MS">@Model.bidService.</h1>
+                }*@

@@ -1,0 +1,155 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.UserAccount.EditUserModel
+@{
+}
+
+<style>
+    * {
+        text-overflow: auto;
+        box-sizing: border-box;
+    }
+
+    .profile {
+        margin: auto;        
+        padding-top: 20px;
+        background-size: cover;
+        
+    }
+
+    label {
+        font-weight: 600;
+        margin-right: 10px;
+        width: 100px;
+    }
+    .media{
+        margin-bottom:10px;
+
+    }
+
+
+
+    .column {
+        float: left;
+        padding: 10px;
+        height: 300px;
+    }
+
+    .left {
+        width: 25%;
+    }
+
+    .right {
+        width: 50%;
+    }
+
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .img {
+        background-size: cover;
+        width: 240px;
+        height: 300px;
+        object-fit: contain;
+        
+    }
+
+    .row {
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:20%;
+        top: 30%;
+        position: absolute;
+    }
+
+
+
+</style>
+
+
+
+<div class="row">
+    <div class="column-left">
+
+    <form style="padding-left: 50px" method="post">
+        <div asp-validation-summary="ModelOnly">
+        @*<img style="width:230px; height:240px;" src="https://cdn1.vectorstock.com/i/1000x1000/51/05/male-profile-avatar-with-brown-hair-vector-12055105.jpg">*@
+
+        <img style="width:230px; height:240px;" src="@Model.LoggedUser.Picture" class="img-fluid img-thumbnail" title="Avatar" alt="Avatar picture couldn't be displayed now'">
+        <input type="file" class="form-control" asp-for="@Model.Upload" />
+
+
+
+    </div>
+
+    <div class="column-right">
+
+        <div class="col-md-6" style="float:left">
+            <div class="media">
+                <label>   Name: </label>
+                <input type="text" class="form-control rounded-pill" placeholder="UserName *" asp-for="@Model.LoggedUser.UserName" />
+                <span asp-validation-for="@Model.LoggedUser.UserName" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label>   First Name </label>
+                <input type="text" class="form-control rounded-pill" placeholder="FirstName *" asp-for="@Model.LoggedUser.FirstName" />
+                <span asp-validation-for="@Model.LoggedUser.FirstName" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label>   Last Name </label>
+                <input type="text" class="form-control rounded-pill" placeholder="LastName *" asp-for="@Model.LoggedUser.LastName" />
+                <span asp-validation-for="@Model.LoggedUser.LastName" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label>   Age: </label>
+                <input type="number" class="form-control rounded-pill" placeholder="Age *" asp-for="@Model.LoggedUser.Age" />
+                <span asp-validation-for="@Model.LoggedUser.Age" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6" style="float:right">
+            <div class="media">
+                <label> Street: </label>
+                <input type="text" class="form-control rounded-pill" placeholder="StreetAddress *" asp-for="@Model.LoggedUser.StreetAddress" />
+                <span asp-validation-for="@Model.LoggedUser.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label> Zip code: </label>
+                <input type="text" class="form-control rounded-pill" placeholder="ZipCode *" asp-for="@Model.LoggedUser.ZipCode" />
+                <span asp-validation-for="@Model.LoggedUser.ZipCode" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label> City: </label>
+                <input type="text" class="form-control rounded-pill" placeholder="City *" asp-for="@Model.LoggedUser.City" />
+                <span asp-validation-for="@Model.LoggedUser.Age" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label> Email:</label>
+                <input type="text" class="form-control rounded-pill" placeholder="Email *" asp-for="@Model.LoggedUser.Email" />
+                <span asp-validation-for="@Model.LoggedUser.Email" class="text-danger"></span>
+            </div>
+            <div class="media">
+                <label> Phone: </label>
+                <input type="text" class="form-control rounded-pill" placeholder="PhoneNumber *" asp-for="@Model.LoggedUser.PhoneNumber" />
+                <span asp-validation-for="@Model.LoggedUser.PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="container" style="position:absolute; bottom:-32%; left:-2%">
+            <div class="form-group" style="display:flex">
+                <button type="submit" value="Save" class="btn rounded-pill" style=" font-size: medium; margin-right:25px; margin-top:30px; background-color: rgb(163 160 130);">Save Changes</button>
+                <a asp-page="/UserAccount/DisplayUser" class="btn rounded-pill" style=" font-size: medium; width:125px; margin-top:30px; background-color: rgb(163 160 130);">Cancel</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+

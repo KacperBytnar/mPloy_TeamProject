@@ -7,6 +7,10 @@ namespace mPloy_TeamProjectG5.Services.Interfaces
         public List<AppUser> GetAllUsers();
         //public void CreateUser(AppUser user);
         public AppUser GetUserById(int id);
-        public Task<AppUser> EditUser(AppUser user);
+        public void EditUser(AppUser user);
+
+
+
+
     }
 }

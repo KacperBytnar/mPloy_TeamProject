@@ -1,0 +1,71 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.Tasks.DeleteTaskModel
+@{
+}
+
+
+<style>
+
+    .Hname {
+        margin-bottom: 20px;
+        font-family: 'wire one', serif;
+        font-size: 60px;
+        padding-top: 120px;
+        
+    }
+
+    ul li{
+        list-style:none;
+        margin-bottom:15px;
+    }
+
+    ul li a{
+        font-weight:normal;
+    }
+    
+</style>
+
+
+<div class="container">
+
+    <h3 class="Hname">Delete task?</h3>
+
+    <form method="post">
+        <ul class="row">
+            <li class="col-sm-2">
+
+                <h6>Title: </h6>
+                <a> @Model.task.Title</a>
+
+            <li class="col-sm-10">
+                <h6>Description:</h6>
+                <a> @Model.task.Description</a>
+
+            </li>
+            <li class="col-sm-2">
+                <h6>Price: </h6>
+                <a> @Model.task.Prize</a>
+            </li>
+            <li class="col-sm-2">
+                <h6>Location: </h6>
+                <a> @Model.task.Location</a>
+
+
+            </li>
+            <li class="col-sm-6">
+                <h6>Category: </h6>
+                <a> @Model.task.Categories</a>
+
+            </li>
+
+        </ul>
+
+        <div>
+            <input type="submit" value="Delete" class="btn btn-secondary rounded-pill" style=" font-size: medium; margin-right: 25px; width: 125px; background-color: rgb(163 160 130);" />
+            <a class="btn btn-secondary rounded-pill" style="background-color: rgb(163 160 130); font-size:medium; width:125px" asp-page="/Tasks/GetAllTasks"> Cancel</a>
+        </div>
+
+    </form>
+   
+</div>
+

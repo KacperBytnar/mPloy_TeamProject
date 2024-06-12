@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mPloy_TeamProjectG5.Models;
 
@@ -11,13 +12,15 @@ using mPloy_TeamProjectG5.Models;
 namespace mPloy_TeamProjectG5.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240523232622_Adding_Tasks")]
+    partial class Adding_Tasks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -288,37 +291,14 @@ namespace mPloy_TeamProjectG5.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("TaskID");
 
-                    b.HasIndex("CreatorID");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("mPloy_TeamProjectG5.Models.UserBidOnTask", b =>
-                {
-                    b.Property<int>("BidID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BidID"));
-
-                    b.Property<int>("TaskID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("isAccepted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("BidID");
-
-                    b.HasIndex("TaskID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("UserBids");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -374,30 +354,11 @@ namespace mPloy_TeamProjectG5.Migrations
 
             modelBuilder.Entity("mPloy_TeamProjectG5.Models.Task", b =>
                 {
-                    b.HasOne("mPloy_TeamProjectG5.Models.AppUser", "Creator")
-                        .WithMany("CompletedTasks")
-                        .HasForeignKey("CreatorID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Creator");
-                });
-
-            modelBuilder.Entity("mPloy_TeamProjectG5.Models.UserBidOnTask", b =>
-                {
-                    b.HasOne("mPloy_TeamProjectG5.Models.Task", "Task")
-                        .WithMany("Bids")
-                        .HasForeignKey("TaskID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("mPloy_TeamProjectG5.Models.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
+                        .WithMany("CompletedTasks")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Task");
 
                     b.Navigation("User");
                 });
@@ -405,11 +366,6 @@ namespace mPloy_TeamProjectG5.Migrations
             modelBuilder.Entity("mPloy_TeamProjectG5.Models.AppUser", b =>
                 {
                     b.Navigation("CompletedTasks");
-                });
-
-            modelBuilder.Entity("mPloy_TeamProjectG5.Models.Task", b =>
-                {
-                    b.Navigation("Bids");
                 });
 #pragma warning restore 612, 618
         }

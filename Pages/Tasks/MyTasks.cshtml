@@ -1,0 +1,50 @@
+﻿@page
+@model mPloy_TeamProjectG5.Pages.Tasks.MyTasksModel
+@{
+}
+
+
+<div class="container">
+    <div class="btn-toolbar" style="height:100px; margin-top:30px; margin-bottom:-10px; ">
+        <div style="width: 30%; float: left;">
+            <a class="btn btn-secondary float-xl-left" style=" font-size: medium; background-color: rgb(163 160 130) " asp-page="/Tasks/GetAllTasks"> All Tasks </a>
+        </div>
+    </div>
+</div>
+
+
+
+@foreach (var item in Model.tasks)
+{
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card" style="width: 1000px; height: 200px">
+                <div class="card-horizontal" style="display: flex; flex: 1 1 auto;">
+                    <div class="img-square-wrapper">
+                            <img class="img" style="width: 100%; max-width: 140px; height: 100%;" src="~/Images/wantu.png" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title">@item.Title</h6>
+                        <p class="card-text">@item.Description</p>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <a style="margin-right: 2px"> Location: </a> @item.Location <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Category: </a> @item.Categories <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Payment Type: </a> @item.Payment <a style="margin-right: 40px"></a>
+                        <a style="margin-right: 2px"> Price: </a> @item.Prize <a style="margin-right: 40px"></a>
+
+
+
+                        <a style="float: right; width: 80px; background-color: rgb(163 160 130" class="btn btn-secondary" asp-page="/Tasks/DeleteTask" asp-route-id="@item.TaskID"> Delete </a>
+                        <a style="margin-right: 10px; float: right; width: 80px; background-color: rgb(163 160 130" class="btn btn-secondary" asp-page="/Tasks/EditTask" asp-route-id="@item.TaskID"> Edit </a>
+                        <a style="margin-right: 10px; float: right; width: 120px; background-color: rgb(163 160 130" class="btn btn-secondary" asp-page="/Tasks/Applications" asp-route-id="@item.TaskID"> Applications </a>
+
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>}

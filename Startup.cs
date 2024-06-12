@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using mPloy_FinalProject_group5.Services.EFServices;
+using mPloy_TeamProjectG5.Services.EFServices;
 using mPloy_TeamProjectG5.Services.Interfaces;
 
 namespace mPloy_TeamProjectG5
@@ -22,6 +22,10 @@ namespace mPloy_TeamProjectG5
             services.AddRazorPages();
 
             services.AddTransient<IUserService, EFUserService>();
+            services.AddTransient<ITaskService, EFTaskService>();
+            services.AddTransient<IBidService, EFBidService>();
+
+
 
             IServiceCollection serviceCollection = services.AddHttpContextAccessor();
 
